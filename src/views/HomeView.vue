@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="index">
+    <nav></nav>
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer class="index_footer">
+      <var-bottom-navigation v-model:active="active">
+        <var-bottom-navigation-item name="home" label="首页" icon="home" />
+        <var-bottom-navigation-item name="draw" label="开奖" icon="play-circle" />
+        <var-bottom-navigation-item name="mine" label="我的" icon="account-circle" />
+      </var-bottom-navigation>
+    </footer>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script setup>
+import { ref } from 'vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+const active = ref("home")
 </script>
+
+<style lang="scss">
+.index_footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+}
+</style>
